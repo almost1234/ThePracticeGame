@@ -30,6 +30,7 @@ public class AttackSystem : MonoBehaviour
         if (player.health <= 0) 
         {
             Battlefield.turnList.Remove(player);
+            Battlefield.entityData.Remove(player.name);
             Debug.Log("Bitch " + player.name + "ded");
         }
     }

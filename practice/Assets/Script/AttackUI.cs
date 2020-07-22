@@ -13,23 +13,34 @@ public class AttackUI : MonoBehaviour
     //1. When chosen, give the attack data/ saved attack data on the AttackUI(?)/ create another step on attackSystem  
     //2. Generate the EnemyList, and when selected, transfer it to the attackSystem
 
-    public Dropdown enemySelector;
-
+    public Button enemyButton;
+    public Text enemyName;
     private void Start()
     {
         //enemySelector = gameObject.GetComponent<Dropdown>();
-        enemySelector.onValueChanged.AddListener(delegate { ValueClicked(); }); //I really dont know why they do not want to accept single method
+        
+    }
+
+    public void SetEntityName() 
+    {
+        enemyName.text = Battlefield.turnList[0].name;
     }
 
     public void GenerateEnemy(Dictionary<string, EntityBase> enemyList) 
     {
-        enemySelector.ClearOptions();
-        enemySelector.AddOptions(DumbFunction<string,EntityBase>.GetKeys(enemyList));
+        DumbFunction<int, int>.DestroyAllChild(transform);
+        Text buttonText = enemyButton.GetComponentInChildren<Text>();
+        foreach (KeyValuePair<string, EntityBase> data in enemyList) 
+        {
+            buttonText.text = data.Key;
+            Button attackTarget = Instantiate(enemyButton, transform);
+            attackTarget.onClick.AddListener(delegate { ValueClicked(data.Value); });
+        }
     }
 
-    public void ValueClicked() 
+    public void ValueClicked(EntityBase target) 
     {
-        AttackSystem.Attack(Battlefield.turnList[0].attack, Battlefield.entityData[enemySelector.options[enemySelector.value].text]);
+        AttackSystem.Attack(Battlefield.turnList[0].attack, target);
         Battlefield.nextTurn = true;
     }
 }

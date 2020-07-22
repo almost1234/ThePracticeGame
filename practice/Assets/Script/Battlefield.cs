@@ -13,6 +13,7 @@ public class Battlefield : MonoBehaviour
     public static List<EntityBase> turnList; //this will create a spaghetti code if u go back just to access the data again
                                                //Try ask if I need to create a specific code to store all values for referencing purposes
     public AttackUI enemyList;
+    public VictoryChecker victory;
 
     public static bool nextTurn; // make an event for more secure flow?
     public bool waiting;
@@ -34,19 +35,29 @@ public class Battlefield : MonoBehaviour
             //Pop out the attack mechanism here
             Debug.Log("Now it was " + turnList[0].name + " turn");
             waiting = true;
-            if (entityData == null) 
-            {
-                Debug.Log("THIS BITCH EMPTY");
-            }
-            enemyList.GenerateEnemy(someData);
+            enemyList.GenerateEnemy(someData); // I think these 2 functions can be delegate/ event , but I still forget/ misunderstand how to call it
+            enemyList.SetEntityName();
         }
 
-        else if (nextTurn == true) 
+        else if (nextTurn) 
         {
             //This area use the victory check and rotation
-
+            
             turnList.Add(turnList[0]);
             turnList.Remove(turnList[0]);
+            switch (victory.Check(turnList))
+            {
+                case 0:
+                    break;
+                case 1:
+                    Time.timeScale = 0f;
+                    Debug.Log("Player Win");
+                    break;
+                case 2:
+                    Time.timeScale = 0f;
+                    Debug.Log("Enemy Win");
+                    break;
+            }
             nextTurn = false;
             waiting = false;
         }

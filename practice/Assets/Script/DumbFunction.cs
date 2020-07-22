@@ -14,4 +14,12 @@ public class DumbFunction<T,U> : MonoBehaviour
         }
         return returnList;
     }
+
+    public static void DestroyAllChild(Transform parent) 
+    {
+        foreach (Transform child in parent) 
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+    }
 }
