@@ -184,7 +184,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50219271
 GameObject:
@@ -229,12 +229,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf859e6ce44668428782d06a9053a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: something
-  attack: 10
+  entityName: 
+  attack: 1
   defense: 3
-  speed: 3
+  speed: 10
   health: 10
   entityType: Player
+  attackList:
+  - BasicAttack
+  - AllAttack
 --- !u!1 &199787340
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +331,7 @@ RectTransform:
   - {fileID: 2046163655}
   - {fileID: 225888988}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -411,7 +414,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyButton: {fileID: 8322771243574570265, guid: 0d00687a0dfb3a649b888d489d197da0,
     type: 3}
+  attackButton: {fileID: 6988483783451457018, guid: 92cf75b44b1dd5442ad72adb81f41f56,
+    type: 3}
+  attackButtonText: {fileID: 0}
   enemyName: {fileID: 2046163656}
+  dataManager: {fileID: 1482818956}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,12 +545,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf859e6ce44668428782d06a9053a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: dick
-  attack: 10
+  entityName: 
+  attack: 1
   defense: 3
-  speed: 2
+  speed: 3
   health: 10
   entityType: ssometh
+  attackList:
+  - AllAttack2
+  - sd
+  - ds
 --- !u!1 &1208467885
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +588,7 @@ Transform:
   - {fileID: 1652382890}
   - {fileID: 1170768815}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1208467887
 MonoBehaviour:
@@ -607,6 +618,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92d3d60cb8162042b2e119d420fa05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1482818955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1482818957}
+  - component: {fileID: 1482818956}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1482818956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482818955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2248ac9ab81a8f042a43deaecd3aeecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1482818957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482818955}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 640.0527, y: 340.6308, z: -61.958336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1652382889
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,12 +704,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf859e6ce44668428782d06a9053a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: gay
-  attack: 10
+  entityName: 
+  attack: 1
   defense: 3
-  speed: 1
+  speed: 2
   health: 10
   entityType: Player
+  attackList:
+  - AllAttack
+  - sdfjkdl
 --- !u!1 &2046163654
 GameObject:
   m_ObjectHideFlags: 0

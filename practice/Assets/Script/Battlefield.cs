@@ -35,7 +35,9 @@ public class Battlefield : MonoBehaviour
             //Pop out the attack mechanism here
             Debug.Log("Now it was " + turnList[0].name + " turn");
             waiting = true;
-            enemyList.GenerateEnemy(someData); // I think these 2 functions can be delegate/ event , but I still forget/ misunderstand how to call it
+            //Attack Action flow : Generate attack list (Create a dictionary for referencing/calling purposes -> 
+            // to provide data regarding attack multiplier + element) -> generate target list (if required) -> call 
+            enemyList.GenerateAttack(turnList[0].attackList); // this is a poor way to get the attackList, need to learn how to use interface/ struct idk
             enemyList.SetEntityName();
         }
 
@@ -83,7 +85,7 @@ public class Battlefield : MonoBehaviour
             playerList.Add(data, data.speed);
         }
 
-        var something = from pair in playerList orderby pair.Value ascending select pair; //maybe learning linq?
+        var something = from pair in playerList orderby pair.Value descending select pair; //maybe learning linq?
         List<EntityBase> dataList = new List<EntityBase>();
         foreach (KeyValuePair<EntityBase, int> entity in something) 
         {

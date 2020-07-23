@@ -35,7 +35,7 @@ public class AttackSystem : MonoBehaviour
         }
     }
 
-    public static Dictionary<string, EntityBase> EnemyList(EntityBase[] entityList) 
+    public static Dictionary<string, EntityBase> EnemyList(List<EntityBase> entityList) 
     {
         Dictionary<string, EntityBase> enemyList = new Dictionary<string, EntityBase>();
         foreach (EntityBase entity in entityList) 

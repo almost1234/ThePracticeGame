@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EntityBase : MonoBehaviour
 {
-    public string name;
+    public string entityName;
     public int attack;
     public int defense;
     public int speed;
@@ -12,24 +12,25 @@ public class EntityBase : MonoBehaviour
     public string entityType;
 
     public EntityStat properties;
+    public List<string> attackList;
     private void Awake()
     {
-        properties = new EntityStat(name,attack, defense, speed, health, entityType);
+        properties = new EntityStat(entityName,attack, defense, speed, health, entityType);
     }
 }
 
 public struct EntityStat 
 {
-    public string name;
+    public string entityName;
     public int attack;
     public int defense;
     public int speed;
     public int health;
     public string entityType;
 
-    public EntityStat(string name,int attack, int defense, int speed, int health, string entityType) 
+    public EntityStat(string entityName,int attack, int defense, int speed, int health, string entityType) 
     {
-        this.name = name;
+        this.entityName = entityName;
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
