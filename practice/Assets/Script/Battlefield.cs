@@ -37,7 +37,7 @@ public class Battlefield : MonoBehaviour
             waiting = true;
             //Attack Action flow : Generate attack list (Create a dictionary for referencing/calling purposes -> 
             // to provide data regarding attack multiplier + element) -> generate target list (if required) -> call 
-            enemyList.GenerateAttack(turnList[0].attackList); // this is a poor way to get the attackList, need to learn how to use interface/ struct idk
+            enemyList.RenderOption(turnList[0].attackList); // this is a poor way to get the attackList, need to learn how to use interface/ struct idk
             enemyList.SetEntityName();
         }
 
