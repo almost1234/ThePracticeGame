@@ -9,11 +9,9 @@ public class AttackSystem : MonoBehaviour
 
     //Is there too much static
 
-    public static void Attack(int attackDamage, EntityBase target) 
+    public static void Attack(float attackDamage, EntityBase target) 
     {
-        target.health -= attackDamage;
-        Debug.Log(target.name + " has received " + attackDamage.ToString());
-        Debug.Log(target.name + " has " + target.health.ToString() + "left!");
+        target.health -= (int)attackDamage >= 0 ? (int)(attackDamage) : 0;;
         HealthCheck(target);
     }
 

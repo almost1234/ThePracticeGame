@@ -22,11 +22,16 @@ public class AttackUI : MonoBehaviour
     //TODO: Reminder that there is random attack too
 
     //Maybe I should add a one function attack sequence call
+    //While both GenerateAttack() and GenerateTarget is more or less the same shit, I cant make a generic due to the different delegate functions added
+    //Unless, I created the function template for the addition?
     public Button enemyButton;
     public Button attackButton;
     public Text attackButtonText;
     public Text enemyName;
     public DataManager dataManager;
+
+    public GameObject buttonGroup;
+    public GameObject emptyButton;
 
     public void Start()
     {
@@ -68,6 +73,7 @@ public class AttackUI : MonoBehaviour
                     break;
             }
         }
+        AdjustButton(transform);
         Debug.Log("Attack Generation done");
     }
     public void GenerateEnemy(Dictionary<string, EntityBase> enemyList, string attackName) 
@@ -80,11 +86,32 @@ public class AttackUI : MonoBehaviour
             Button attackTarget = Instantiate(enemyButton, transform);
             attackTarget.onClick.AddListener(delegate { ToAttack(data.Value, attackName); });
         }
+        AdjustButton(transform);
     }
+    public void AdjustButton(Transform parent) 
+    {
+        int childCount = parent.childCount;
+        Transform group = transform;
+        for(int i = 0; i < childCount; i++)
+        {
+            if (i % 2 == 0) 
+            {
+                group = Instantiate(buttonGroup, transform).GetComponent<Transform>();
+            }
 
+            parent.GetChild(0).SetParent(group);
+        }
+        if (childCount % 2 == 1) 
+        {
+            Instantiate(emptyButton, group);
+        }
+    }
+    
     public void ToAttack(EntityBase target, string attackName) 
     {
-        AttackSystem.Attack(Battlefield.turnList[0].attack, target);
+        //In the end, the attackStat multiplied by the multiplier and rounded by int
+        Debug.Log("DAMAGE : " + (Battlefield.turnList[0].attack * DamageCalculation.CalculateMultiplier(target, dataManager.GetAttackData(attackName))));
+        AttackSystem.Attack((Battlefield.turnList[0].attack * DamageCalculation.CalculateMultiplier(target, dataManager.GetAttackData(attackName))), target);
         Battlefield.nextTurn = true;
     }
 }

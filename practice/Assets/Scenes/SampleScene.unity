@@ -184,7 +184,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &50219271
 GameObject:
@@ -235,8 +235,12 @@ MonoBehaviour:
   speed: 10
   health: 10
   entityType: Player
+  weakness: 
+  resistance: 
   attackList:
   - BasicAttack
+  - AllAttack
+  - AllAttack
   - AllAttack
 --- !u!1 &199787340
 GameObject:
@@ -331,7 +335,7 @@ RectTransform:
   - {fileID: 2046163655}
   - {fileID: 225888988}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -372,8 +376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.5, y: -192.5}
-  m_SizeDelta: {x: 927.9, y: 155.1}
+  m_AnchoredPosition: {x: -3.5, y: -105.6}
+  m_SizeDelta: {x: 927.9, y: 329}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &225888989
 MonoBehaviour:
@@ -384,7 +388,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 225888987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -395,11 +399,11 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 1
+  m_ChildScaleHeight: 0
 --- !u!114 &225888990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +423,10 @@ MonoBehaviour:
   attackButtonText: {fileID: 0}
   enemyName: {fileID: 2046163656}
   dataManager: {fileID: 1482818956}
+  buttonGroup: {fileID: 2957986682150667892, guid: d5697c88336ac3e4598a207fe5c56dde,
+    type: 3}
+  emptyButton: {fileID: 5611333038615891608, guid: e22cd256e9b416740886a1773be586b7,
+    type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +510,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &770293349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770293351}
+  - component: {fileID: 770293350}
+  m_Layer: 0
+  m_Name: KeyboardInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &770293350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770293349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799f68b460769e74cac6d0170d89732a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackUI: {fileID: 225888990}
+--- !u!4 &770293351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770293349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 588.67566, y: 194.24004, z: -133.47943}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1170768814
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +603,8 @@ MonoBehaviour:
   speed: 3
   health: 10
   entityType: ssometh
+  weakness: 
+  resistance: 01000000
   attackList:
   - AllAttack2
   - sd
@@ -588,7 +642,7 @@ Transform:
   - {fileID: 1652382890}
   - {fileID: 1170768815}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1208467887
 MonoBehaviour:
@@ -710,6 +764,8 @@ MonoBehaviour:
   speed: 2
   health: 10
   entityType: Player
+  weakness: 01000000
+  resistance: 
   attackList:
   - AllAttack
   - sdfjkdl

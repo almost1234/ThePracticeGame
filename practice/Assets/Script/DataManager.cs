@@ -17,9 +17,9 @@ public class DataManager : MonoBehaviour
 
     private Dictionary<string, AttackData> attackData = new Dictionary<string, AttackData>() 
     {
-        {"BasicAttack", new AttackData(0,2)},
-        {"AllAttack", new AttackData(1,1)},
-        {"AllAttack2", new AttackData(1,2) }
+        {"BasicAttack", new AttackData(0,2, ElementType.fire)},
+        {"AllAttack", new AttackData(1,1, ElementType.fire)},
+        {"AllAttack2", new AttackData(1,2, ElementType.nothing) }
     };
 
     public AttackData GetAttackData(string attackName) 
@@ -28,7 +28,7 @@ public class DataManager : MonoBehaviour
         {
             return attackData[attackName];
         }
-        return new AttackData(-1, 0);
+        return new AttackData(-1, 0, ElementType.nothing);
     }
 }
 
@@ -36,12 +36,19 @@ public struct AttackData
 {
     public int attackType;
     public int attackModifier;
+    public ElementType attackElement;
     //element etc will be added in the future
 
-    public AttackData(int attackType, int attackModifier) 
+    public AttackData(int attackType, int attackModifier, ElementType elementType) 
     {
         this.attackType = attackType;
         this.attackModifier = attackModifier;
+        this.attackElement = elementType;
     }
     
+}
+
+public enum ElementType 
+{
+    nothing,fire,water,earth,wind
 }
